@@ -1,12 +1,84 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>win5ai 予想アーカイブ 2026</title><style>
-body{margin:0;background:#0f1115;color:#e8ecf3;font-family:"Segoe UI",Meiryo,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:20px}
-.box{max-width:560px;text-align:center}h1{font-size:26px;margin:0 0 10px}.sub{color:#9aa6b8;font-size:14px;line-height:1.8}
-.spin{display:inline-block;width:34px;height:34px;border:4px solid #2a313d;border-top-color:#5b8def;border-radius:50%;animation:s 1s linear infinite;margin:18px 0}
-@keyframes s{to{transform:rotate(360deg)}}.tag{display:inline-block;background:#1a1e27;border:1px solid #2a313d;border-radius:20px;padding:5px 14px;font-size:12px;color:#9aa6b8;margin-top:14px}
-</style></head><body><div class="box">
+:root{--bg:#0f1115;--card:#1a1e27;--ink:#e8ecf3;--sub:#9aa6b8;--line:#2a313d;--accent:#5b8def}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Meiryo,sans-serif;padding:18px 12px}
+.wrap{max-width:1000px;margin:0 auto}h1{font-size:22px;margin:0 0 3px}.sub{color:var(--sub);font-size:13px;margin-bottom:6px;line-height:1.7}
+.tot{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 14px;margin:12px 0 18px;font-size:13px;color:var(--sub)}
+.tot b{color:var(--ink);font-size:16px}
+.mh{font-weight:800;font-size:16px;margin:18px 0 9px;border-left:4px solid var(--accent);padding-left:9px}.ms{color:var(--sub);font-size:12px;font-weight:400}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:9px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;text-decoration:none;color:var(--ink);transition:.15s;display:block}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.cd{font-weight:800;font-size:16px}.cw{color:var(--sub);font-size:12px;font-weight:400;margin-left:3px}
+.cv{color:var(--sub);font-size:11.5px;margin:3px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cm{font-size:12px;color:var(--sub);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.hit{color:#0dd07a;font-weight:700}.nores{color:#6b7686}.w5b{background:#0d9b4e;color:#fff;font-size:9px;font-weight:800;padding:1px 5px;border-radius:3px}
+
+.hero{background:linear-gradient(135deg,#161b26 0%,#11151d 60%,#0f1115 100%);border:1px solid #2a313d;border-radius:18px;padding:22px 22px 18px;margin:14px 0 22px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-40%;right:-10%;width:340px;height:340px;background:radial-gradient(circle,rgba(91,141,239,.18),transparent 70%);pointer-events:none}
+.hero-h{font-size:12px;letter-spacing:.22em;color:#7c8aa3;font-weight:700;margin:0 0 14px;text-transform:uppercase}
+.hero-skill{display:flex;align-items:flex-end;gap:34px;flex-wrap:wrap;margin-bottom:6px}
+.hs-blk{display:flex;flex-direction:column}
+.hs-cap{font-size:12px;color:#9aa6b8;margin-bottom:2px;font-weight:600}
+.hs-num{font-size:46px;font-weight:800;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.hs-num i{font-size:22px;font-weight:700;font-style:normal;margin-left:2px;color:#9aa6b8}
+.hs-roi .hs-num{color:#5b8def}.hs-hit .hs-num{color:#e8ecf3}
+.hs-meta{font-size:12px;color:#7c8aa3;margin:10px 0 18px}
+.hero-sub{font-size:12px;letter-spacing:.16em;color:#7c8aa3;font-weight:700;margin:0 0 11px;text-transform:uppercase}
+.hero-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.h-tile{background:#171c25;border:1px solid #283040;border-top:3px solid var(--c);border-radius:13px;padding:13px 13px 11px}
+.h-tname{font-size:17px;font-weight:800;color:var(--c);letter-spacing:.02em}
+.h-tsub{font-size:10.5px;color:#7c8aa3;margin:1px 0 9px}
+.h-tg{display:flex;gap:14px;margin-bottom:7px}
+.h-tg .h-c{display:flex;flex-direction:column}
+.h-tbig{font-size:25px;font-weight:800;line-height:1;color:#e8ecf3;font-variant-numeric:tabular-nums}
+.h-tbig i{font-size:13px;font-style:normal;color:#9aa6b8;margin-left:1px}
+.h-tlb{font-size:10px;color:#7c8aa3;margin-top:3px}
+.h-tmid{font-size:11px;color:#9aa6b8;border-top:1px solid #232a36;padding-top:7px}
+.h-tmid b{color:#cdd5e2}
+.hero-yume{margin-top:14px;font-size:12px;color:#7c8aa3;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hero-yume b{color:#b08bd6;font-size:14px;font-weight:800}
+.hero-tag{display:inline-block;font-size:10.5px;color:#7c8aa3;background:#11151d;border:1px solid #283040;border-radius:20px;padding:3px 11px}
+@media(max-width:680px){.hero-tiles{grid-template-columns:repeat(2,1fr)}.hs-num{font-size:38px}.hero-skill{gap:24px}}
+
+@media(max-width:600px){.grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:7px}h1{font-size:19px}}
+</style></head><body><div class="wrap">
 <h1>🏇 win5ai 予想アーカイブ 2026</h1>
-<div class="sub">4GNN(BASE/HON/MID/ANA・market-free)による2026年の全開催予想を準備中です。<br>全51開催のダッシュボードを生成しています。まもなく公開します。</div>
-<div class="spin"></div>
-<div class="tag">堅さ判定 ・ 本命 ・ 合議 ・ 穴 ・ 推奨馬券 ・ 結果🎯</div>
+<div class="sub">4GNN(BASE/HON/MID/ANA・market-free・cut2025)による2026年の全開催予想。日付をタップ→各レースの本命信頼度・本命・合議・穴・馬券・結果(🎯)。</div>
+<div class="hero">
+<div class="hero-h">2026 シーズン成績 ・ market-free 4GNN</div>
+<div class="hero-skill">
+<div class="hs-blk hs-roi"><span class="hs-cap">検証スキル 回収率</span><span class="hs-num">60<i>%</i></span></div>
+<div class="hs-blk hs-hit"><span class="hs-cap">検証スキル 的中率</span><span class="hs-num">18<i>%</i></span></div>
+</div>
+<div class="hs-meta">本命軸+妙味 ・ 848口 投資 84,800円 / 払戻 50,520円</div>
+<div class="hero-sub">確信度トップ10% ・ 本命複勝の実績</div>
+<div class="hero-tiles"><div class="h-tile" style="--c:#5b8def">
+<div class="h-tname">BASE</div><div class="h-tsub">全馬</div>
+<div class="h-tg"><div class="h-c"><span class="h-tbig">61<i>%</i></span><span class="h-tlb">複勝的中</span></div>
+<div class="h-c"><span class="h-tbig">82<i>%</i></span><span class="h-tlb">回収</span></div></div>
+<div class="h-tmid">中央 <b>3.3倍</b> ・ 258頭</div></div><div class="h-tile" style="--c:#3fb98f">
+<div class="h-tname">HON</div><div class="h-tsub">本命 1-10倍</div>
+<div class="h-tg"><div class="h-c"><span class="h-tbig">71<i>%</i></span><span class="h-tlb">複勝的中</span></div>
+<div class="h-c"><span class="h-tbig">85<i>%</i></span><span class="h-tlb">回収</span></div></div>
+<div class="h-tmid">中央 <b>2.4倍</b> ・ 73頭</div></div><div class="h-tile" style="--c:#e0a23c">
+<div class="h-tname">MID</div><div class="h-tsub">中穴 10-30倍</div>
+<div class="h-tg"><div class="h-c"><span class="h-tbig">22<i>%</i></span><span class="h-tlb">複勝的中</span></div>
+<div class="h-c"><span class="h-tbig">62<i>%</i></span><span class="h-tlb">回収</span></div></div>
+<div class="h-tmid">中央 <b>16.4倍</b> ・ 64頭</div></div><div class="h-tile" style="--c:#e0556a">
+<div class="h-tname">ANA</div><div class="h-tsub">大穴 30-100倍</div>
+<div class="h-tg"><div class="h-c"><span class="h-tbig">6<i>%</i></span><span class="h-tlb">複勝的中</span></div>
+<div class="h-c"><span class="h-tbig">66<i>%</i></span><span class="h-tlb">回収</span></div></div>
+<div class="h-tmid">中央 <b>51.6倍</b> ・ 64頭</div></div></div>
+<div class="hero-yume"><span class="hero-tag">おまけ</span>3連系(夢) <b>1,430口</b> ・ 回収 <b>0%</b> <span style="color:#5a6678">(超堅F/超荒BOX/重賞・高配当狙い)</span></div>
+</div>
+<div class="tot">期間 2026/1/1〜6/14 ｜ <b>6</b>開催 ｜ <b>180</b>レース ｜ 馬券的中 <b>🎯230</b></div>
+<div class="mh">2026年1月 <span class="ms">2開催</span></div><div class="grid"><a class="card" href="dashboard_20260104.html"><div class="cd">1/4<span class="cw">(日)</span></div>
+<div class="cv">中山 / 京都</div><div class="cm">24R  <span class="hit">🎯31</span></div></a><a class="card" href="dashboard_20260111.html"><div class="cd">1/11<span class="cw">(日)</span></div>
+<div class="cv">中山 / 京都</div><div class="cm">24R  <span class="hit">🎯26</span></div></a></div><div class="mh">2026年2月 <span class="ms">1開催</span></div><div class="grid"><a class="card" href="dashboard_20260201.html"><div class="cd">2/1<span class="cw">(日)</span></div>
+<div class="cv">東京 / 京都 / 小倉</div><div class="cm">36R  <span class="hit">🎯43</span></div></a></div><div class="mh">2026年3月 <span class="ms">1開催</span></div><div class="grid"><a class="card" href="dashboard_20260301.html"><div class="cd">3/1<span class="cw">(日)</span></div>
+<div class="cv">中山 / 阪神 / 小倉</div><div class="cm">36R  <span class="hit">🎯45</span></div></a></div><div class="mh">2026年4月 <span class="ms">1開催</span></div><div class="grid"><a class="card" href="dashboard_20260404.html"><div class="cd">4/4<span class="cw">(土)</span></div>
+<div class="cv">中山 / 阪神</div><div class="cm">24R  <span class="hit">🎯32</span></div></a></div><div class="mh">2026年5月 <span class="ms">1開催</span></div><div class="grid"><a class="card" href="dashboard_20260502.html"><div class="cd">5/2<span class="cw">(土)</span></div>
+<div class="cv">新潟 / 東京 / 京都</div><div class="cm">36R  <span class="hit">🎯53</span></div></a></div>
+<div class="sub" style="margin-top:24px;font-size:11.5px">※予測はオッズ非使用(market-free)。推奨馬券の妙味はフェア価格超えだが控除率の壁で長期プラスは保証しない。各日ページはスマホ対応。</div>
 </div></body></html>
