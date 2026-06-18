@@ -68,10 +68,10 @@
 .mhead{font-size:20px;font-weight:800;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center;color:#eef2f8}
 .mnote{font-size:12.5px;color:#9aa6b8;margin-bottom:14px;line-height:1.6}
 .mclose{cursor:pointer;color:#9aa6b8;font-size:24px;line-height:1}
-.mbox table{width:100%;border-collapse:collapse;font-size:14px} .mbox th,.mbox td{padding:6px 9px;border-bottom:1px solid #252c39;text-align:right}
+.mbox table{width:100%;border-collapse:collapse;font-size:14px} .mbox th,.mbox td{padding:6px 9px;border-bottom:1px solid #252c39;text-align:right;white-space:nowrap}
 .mbox th:nth-child(1),.mbox td:nth-child(1){text-align:center} .mbox th:nth-child(2),.mbox td:nth-child(2),.mbox th:nth-child(3){text-align:left} .mbox th{color:#9aa6b8;font-size:12.5px;font-weight:700;border-bottom:2px solid #38414f}
 .wk{display:inline-block;width:22px;height:22px;line-height:21px;text-align:center;border-radius:5px;font-weight:800;font-size:12px;border:1px solid rgba(255,255,255,.18)}
-.rkn{display:block;font-size:9.5px;color:#7a8699;font-weight:400;margin-top:1px}
+.rkn{display:block;font-size:12.5px;color:#9aa6b8;font-weight:700;margin-top:2px}
 .mbox td.rank1{color:#ff5d6a;font-weight:800} .mbox td.rank23{color:#ef8a93;font-weight:600} .mbox td.rank45{color:#e0a23c}
 .mbox tr:hover td{background:rgba(91,141,239,.08)} .cdot{font-size:11px;margin-left:3px;vertical-align:middle}
 @media(max-width:760px){
@@ -206,7 +206,7 @@
 <div class="mline"><span class="mbchar">標準</span><span class="mbbet">ワイド 軸<b>9</b>→14・5・7 <span class="mbpt">3点</span></span> <b style="color:#0d9b4e">🎯870円</b></div></div></div></div>
 <div class="modal" id="modal" onclick="if(event.target.id=='modal')closeM()"><div class="mbox">
 <div class="mhead"><span id="mtitle"></span><span class="mclose" onclick="closeM()">✕</span></div>
-<div class="mnote">左=全モデルのスコアを全頭表示(色=各列の順位 <b style="color:#ff5d6a">1位</b>/<b style="color:#ef8a93">2-3位</b>/<b style="color:#e0a23c">4-5位</b>)。馬キャラ=馬券マシーンの役割(<b style="color:#ffcf5a">軸</b>/<b style="color:#a9caff">紐</b>/<b style="color:#ec6b7f">穴</b>/<b style="color:#ffb84d">⚠危険</b>/🏆一致/<b style="color:#9aa6b8">✕消=4モデルz正規化&lt;-2.5で除外</b>)。右=スコア分布グラフ。</div>
+<div class="mnote">左=全モデルのスコアを全頭表示(色=各列の順位 <b style="color:#ff5d6a">1位</b>/<b style="color:#ef8a93">2-3位</b>/<b style="color:#e0a23c">4-5位</b>)。馬キャラ=馬券マシーンの役割(<b style="color:#ffcf5a">軸</b>/<b style="color:#a9caff">紐</b>/<b style="color:#ec6b7f">穴</b>/<b style="color:#ffb84d">⚠危険</b>/🏆一致/<b style="color:#9aa6b8">✕消=4モデルz正規化&lt;-2.5で除外</b>)。各スコアの下=そのレース内の順位。</div>
 <div id="mbody"></div></div></div>
 <div class="sub" style="margin-top:14px">※確定オッズ取込済(カバー100%)=帯で担当モデル評価(馬キャラ/本命/穴はオッズ不要=p_lsのみ。帯の線引き・危険人気・穴の抽出にのみオッズ使用)。</div>
 </div>
@@ -252,12 +252,14 @@ function krBadge(mk){
  return '<span class="kr-none">·</span>';}
 const WK={1:['#f3f3f3','#1a1a1a'],2:['#1a1a1a','#f5f5f5'],3:['#e24b4a','#fff'],4:['#2f6fd0','#fff'],5:['#f2c500','#1a1a1a'],6:['#1d9e75','#fff'],7:['#e0822f','#fff'],8:['#e87aa0','#3a1020']};
 function wkCell(w){if(!w||w<1||w>8)return '<td></td>';const c=WK[w];return `<td style="text-align:center"><span class="wk" style="background:${c[0]};color:${c[1]}">${w}</span></td>`;}
-let tb='<table><tr><th>枠</th><th>馬番</th><th>馬名</th><th>オッズ</th><th>馬キャラ</th><th>BASE</th><th>HON</th><th>MID</th><th>ANA</th><th>結果着順</th></tr>';
+const pops={};[...r.horses].filter(x=>x.odds!=null&&x.odds>0).sort((a,b)=>a.odds-b.odds).forEach((x,i)=>pops[x.hn]=i+1);
+let tb='<table><tr><th>枠</th><th>馬番</th><th>馬名</th><th>オッズ</th><th>人気</th><th>馬キャラ</th><th>BASE</th><th>HON</th><th>MID</th><th>ANA</th><th>着順</th></tr>';
 [...r.horses].sort((a,b)=>a.hn-b.hn).forEach((x)=>{const od=(x.odds==null)?'—':x.odds.toFixed(1);
  const mk=roles[x.hn]||''; const isAx=(mk==='軸'); const isNo=(mk==='消');
+ const pp=pops[x.hn]?`${pops[x.hn]}<span class="rkn">人気</span>`:'—';
  const fin=(x.fin==null)?'':(x.fin<=3?`<b style="color:#3fd99b">${x.fin}着</b>`:`<span style="color:#9aa3b2">${x.fin}着</span>`);
  const tint=isNo?' style="opacity:0.42"':(isAx?' style="background:rgba(255,207,90,.10)"':(mk==='穴'?' style="background:rgba(236,107,127,.08)"':(mk==='⚠'?' style="background:rgba(224,120,60,.08)"':'')));
- tb+=`<tr${tint}>`+wkCell(x.waku)+`<td>${x.hn}</td><td class="nm">${x.name}</td><td>${od}</td><td style="text-align:center">${krBadge(mk)}</td>`+
+ tb+=`<tr${tint}>`+wkCell(x.waku)+`<td>${x.hn}</td><td class="nm">${x.name}</td><td>${od}</td><td style="text-align:center">${pp}</td><td style="text-align:center">${krBadge(mk)}</td>`+
    cols.map(c=>`<td class="${rc(rk[c][x.hn])}">${x[c]}<span class="rkn">${rk[c][x.hn]+1}位</span></td>`).join('')+`<td style="text-align:center">${fin}</td>`+'</tr>';});
 tb+='</table>';
 const W=560,rowH=96,topp=26,padB=36,X0=66,X1=W-56;
@@ -281,7 +283,7 @@ cols.forEach((c,ci)=>{const y=topp+ci*rowH+rowH/2;const vals=r.horses.map(h=>h[c
  g+=`<line x1="${cx.toFixed(1)}" y1="${(y-21).toFixed(0)}" x2="${cx.toFixed(1)}" y2="${(y+21).toFixed(0)}" stroke="${MC[c]}" stroke-width="1.4" stroke-dasharray="4 3"/>`;
  g+=`<text x="${cx.toFixed(1)}" y="${(y-24).toFixed(0)}" font-size="11" fill="${MC[c]}" text-anchor="middle" font-weight="600">断層 ${cliff[c].gap.toFixed(1)}σ</text>`;});
 g+='</svg>';
-const h=rb+`<div class="mrow"><div class="mtable">${tb}</div><div class="mgraph"><div class="gcap"><b style="color:#eef2f8">スコア分布グラフ</b> — 各点=その馬のスコア(色=モデル) / 帯の幅=拮抗度(狭い＝横並び) / 色の破線=断層(上位で最大何σ落ちるか) / 灰の破線=中央値</div>${g}</div></div>`;
+const h=rb+`<div class="mtable" style="flex-basis:100%">${tb}</div>`;
 document.getElementById('mtitle').textContent=r.venue+r.rno+'R '+r.name;document.getElementById('mbody').innerHTML=h;document.getElementById('modal').classList.add('on');}
 function closeM(){document.getElementById('modal').classList.remove('on');}
 </script></body></html>
