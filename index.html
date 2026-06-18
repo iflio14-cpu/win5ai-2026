@@ -77,11 +77,11 @@
 <div class="hero-h">🎯 馬券マシーン v1.0.0 ・ レースキャラを読んで券種・買い目・賭/見を自動生成 ・ market-free 4GNN</div>
 <div class="mac-grid">
 <div class="mac-card a"><div class="mac-t">モードA</div>
-<div class="mac-nums"><div><span class="mac-big">76<i>%</i></span><span class="mac-lb">回収率</span></div><div><span class="mac-big">40<i>%</i></span><span class="mac-lb">的中率</span></div></div>
-<div class="mac-meta">2026実績 <b>270</b>レース確定（288賭） ・ 検証 6年BT <b>95.2%</b> / 2026 <b>86.3%</b></div></div>
+<div class="mac-nums"><div><span class="mac-big">65<i>%</i></span><span class="mac-lb">回収率</span></div><div><span class="mac-big">40<i>%</i></span><span class="mac-lb">的中率</span></div></div>
+<div class="mac-meta">2026実績 <b>112</b>レース確定（135賭） ・ 検証 6年BT <b>92.4%</b> / 2026 <b>84%</b></div></div>
 <div class="mac-card b"><div class="mac-t">モードB <span class="mac-badge">利益枠</span></div>
-<div class="mac-nums"><div><span class="mac-big">78<i>%</i></span><span class="mac-lb">回収率</span></div><div><span class="mac-big">41<i>%</i></span><span class="mac-lb">的中率</span></div></div>
-<div class="mac-meta">2026実績 <b>22</b>レース確定 ・ 検証 6年BT <b>111%</b> / 2026 <b>116%</b>（分岐点超え）</div></div>
+<div class="mac-nums"><div><span class="mac-big">103<i>%</i></span><span class="mac-lb">回収率</span></div><div><span class="mac-big">53<i>%</i></span><span class="mac-lb">的中率</span></div></div>
+<div class="mac-meta">2026実績 <b>15</b>レース確定 ・ 検証 6年BT <b>105%</b> / 2026 <b>109%</b>（分岐点超え・6/6年）</div></div>
 </div>
 <div class="hs-meta">レースキャラ(圧倒的1頭/上位拮抗/長距離/混戦)を判定→馬キャラ(軸/紐/穴/⚠危険)を選定→ワイドの買い目を生成。回収率は分岐点100%が損益分岐。検証=6年バックテスト+2026前向き(訓練未使用)。</div>
 <div style="margin:6px 0 14px"><a href="model_doc.html" style="display:inline-block;font-size:12px;font-weight:700;color:#8fb4ff;background:rgba(91,141,239,.1);border:1px solid rgba(91,141,239,.3);border-radius:20px;padding:5px 14px;text-decoration:none">🧠 GNNモデルの構造を見る（データの流れ・学習・パラメータ）→</a></div>
@@ -91,41 +91,30 @@
 <div class="hero-tiles"><div class="h-tile" style="--c:#5b8def">
 <div class="h-tname">BASE</div><div class="h-tsub">全馬</div>
 <div class="h-tg"><div class="h-c"><span class="h-tbig">60<i>%</i></span><span class="h-tlb">複勝的中</span></div>
-<div class="h-c"><span class="h-tbig">85<i>%</i></span><span class="h-tlb">回収</span></div></div>
-<div class="h-tmid">中央 <b>3.4倍</b> ・ 2,134頭</div></div><div class="h-tile" style="--c:#3fb98f">
-<div class="h-tname">HON</div><div class="h-tsub">本命 1-10倍</div>
-<div class="h-tg"><div class="h-c"><span class="h-tbig">71<i>%</i></span><span class="h-tlb">複勝的中</span></div>
-<div class="h-c"><span class="h-tbig">92<i>%</i></span><span class="h-tlb">回収</span></div></div>
-<div class="h-tmid">中央 <b>2.7倍</b> ・ 631頭</div></div><div class="h-tile" style="--c:#e0a23c">
-<div class="h-tname">MID</div><div class="h-tsub">中穴 10-30倍</div>
-<div class="h-tg"><div class="h-c"><span class="h-tbig">25<i>%</i></span><span class="h-tlb">複勝的中</span></div>
 <div class="h-c"><span class="h-tbig">80<i>%</i></span><span class="h-tlb">回収</span></div></div>
-<div class="h-tmid">中央 <b>15.4倍</b> ・ 537頭</div></div><div class="h-tile" style="--c:#e0556a">
+<div class="h-tmid">中央 <b>3.3倍</b> ・ 293頭</div></div><div class="h-tile" style="--c:#3fb98f">
+<div class="h-tname">HON</div><div class="h-tsub">本命 1-10倍</div>
+<div class="h-tg"><div class="h-c"><span class="h-tbig">70<i>%</i></span><span class="h-tlb">複勝的中</span></div>
+<div class="h-c"><span class="h-tbig">83<i>%</i></span><span class="h-tlb">回収</span></div></div>
+<div class="h-tmid">中央 <b>2.6倍</b> ・ 83頭</div></div><div class="h-tile" style="--c:#e0a23c">
+<div class="h-tname">MID</div><div class="h-tsub">中穴 10-30倍</div>
+<div class="h-tg"><div class="h-c"><span class="h-tbig">21<i>%</i></span><span class="h-tlb">複勝的中</span></div>
+<div class="h-c"><span class="h-tbig">60<i>%</i></span><span class="h-tlb">回収</span></div></div>
+<div class="h-tmid">中央 <b>16.0倍</b> ・ 72頭</div></div><div class="h-tile" style="--c:#e0556a">
 <div class="h-tname">ANA</div><div class="h-tsub">大穴 30-100倍</div>
-<div class="h-tg"><div class="h-c"><span class="h-tbig">9<i>%</i></span><span class="h-tlb">複勝的中</span></div>
-<div class="h-c"><span class="h-tbig">65<i>%</i></span><span class="h-tlb">回収</span></div></div>
-<div class="h-tmid">中央 <b>48.7倍</b> ・ 523頭</div></div></div>
+<div class="h-tg"><div class="h-c"><span class="h-tbig">8<i>%</i></span><span class="h-tlb">複勝的中</span></div>
+<div class="h-c"><span class="h-tbig">89<i>%</i></span><span class="h-tlb">回収</span></div></div>
+<div class="h-tmid">中央 <b>51.6倍</b> ・ 72頭</div></div></div>
 </div>
-<div class="tot">期間 2026/1/1〜6/14 ｜ <b>19</b>開催 ｜ <b>532</b>レース ｜ 本命3着内 <b>◎181/334</b></div>
-<div class="mh">2026年1月 <span class="ms">10開催</span></div><div class="grid"><a class="card" href="dashboard_20260104.html"><div class="cd">1/4<span class="cw">(日)</span></div>
-<div class="cv">中山 / 京都</div><div class="cm">24R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎2/10的中</span></div></a><a class="card" href="dashboard_20260105.html"><div class="cd">1/5<span class="cw">(月)</span></div>
-<div class="cv">中山 / 京都</div><div class="cm">23R  <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎16/23的中</span></div></a><a class="card" href="dashboard_20260110.html"><div class="cd">1/10<span class="cw">(土)</span></div>
-<div class="cv">中山 / 京都</div><div class="cm">23R  <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎15/23的中</span></div></a><a class="card" href="dashboard_20260111.html"><div class="cd">1/11<span class="cw">(日)</span></div>
-<div class="cv">中山 / 京都</div><div class="cm">23R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎5/11的中</span></div></a><a class="card" href="dashboard_20260112.html"><div class="cd">1/12<span class="cw">(月)</span></div>
-<div class="cv">中山 / 京都</div><div class="cm">23R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎13/23的中</span></div></a><a class="card" href="dashboard_20260117.html"><div class="cd">1/17<span class="cw">(土)</span></div>
-<div class="cv">中山 / 京都</div><div class="cm">23R  <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎12/23的中</span></div></a><a class="card" href="dashboard_20260118.html"><div class="cd">1/18<span class="cw">(日)</span></div>
-<div class="cv">中山 / 京都</div><div class="cm">23R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎16/23的中</span></div></a><a class="card" href="dashboard_20260124.html"><div class="cd">1/24<span class="cw">(土)</span></div>
-<div class="cv">中山 / 京都 / 小倉</div><div class="cm">34R  <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎21/34的中</span></div></a><a class="card" href="dashboard_20260125.html"><div class="cd">1/25<span class="cw">(日)</span></div>
-<div class="cv">中山 / 京都 / 小倉</div><div class="cm">35R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎18/35的中</span></div></a><a class="card" href="dashboard_20260131.html"><div class="cd">1/31<span class="cw">(土)</span></div>
-<div class="cv">東京 / 京都 / 小倉</div><div class="cm">34R  <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎20/34的中</span></div></a></div><div class="mh">2026年2月 <span class="ms">4開催</span></div><div class="grid"><a class="card" href="dashboard_20260201.html"><div class="cd">2/1<span class="cw">(日)</span></div>
-<div class="cv">東京 / 京都 / 小倉</div><div class="cm">35R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎1/9的中</span></div></a><a class="card" href="dashboard_20260207.html"><div class="cd">2/7<span class="cw">(土)</span></div>
-<div class="cv">東京 / 京都 / 小倉</div><div class="cm">34R  <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎17/29的中</span></div></a><a class="card" href="dashboard_20260208.html"><div class="cd">2/8<span class="cw">(日)</span></div>
-<div class="cv">東京 / 京都 / 小倉</div><div class="cm">35R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎7/11的中</span></div></a><a class="card" href="dashboard_20260209.html"><div class="cd">2/9<span class="cw">(月)</span></div>
-<div class="cv">京都</div><div class="cm">12R  <span class="nores">結果待</span></div></a></div><div class="mh">2026年3月 <span class="ms">1開催</span></div><div class="grid"><a class="card" href="dashboard_20260301.html"><div class="cd">3/1<span class="cw">(日)</span></div>
-<div class="cv">中山 / 阪神 / 小倉</div><div class="cm">35R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎5/14的中</span></div></a></div><div class="mh">2026年4月 <span class="ms">1開催</span></div><div class="grid"><a class="card" href="dashboard_20260404.html"><div class="cd">4/4<span class="cw">(土)</span></div>
-<div class="cv">中山 / 阪神</div><div class="cm">23R  <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎2/9的中</span></div></a></div><div class="mh">2026年5月 <span class="ms">2開催</span></div><div class="grid"><a class="card" href="dashboard_20260502.html"><div class="cd">5/2<span class="cw">(土)</span></div>
-<div class="cv">新潟 / 東京 / 京都</div><div class="cm">34R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎6/12的中</span></div></a><a class="card" href="dashboard_20260531.html"><div class="cd">5/31<span class="cw">(日)</span></div>
-<div class="cv">東京 / 京都</div><div class="cm">23R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎5/11的中</span></div></a></div><div class="mh">2026年6月 <span class="ms">1開催</span></div><div class="grid"><a class="card" href="dashboard_20260614.html"><div class="cd">6/14<span class="cw">(日)</span></div>
+<div class="tot">期間 2026/1/1〜6/14 ｜ <b>8</b>開催 ｜ <b>233</b>レース ｜ 本命3着内 <b>◎45/112</b></div>
+<div class="mh">2026年1月 <span class="ms">2開催</span></div><div class="grid"><a class="card" href="dashboard_20260104.html"><div class="cd">1/4<span class="cw">(日)</span></div>
+<div class="cv">中山 / 京都</div><div class="cm">24R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎4/13的中</span></div></a><a class="card" href="dashboard_20260111.html"><div class="cd">1/11<span class="cw">(日)</span></div>
+<div class="cv">中山 / 京都</div><div class="cm">23R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎5/13的中</span></div></a></div><div class="mh">2026年2月 <span class="ms">1開催</span></div><div class="grid"><a class="card" href="dashboard_20260201.html"><div class="cd">2/1<span class="cw">(日)</span></div>
+<div class="cv">東京 / 京都 / 小倉</div><div class="cm">35R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎8/21的中</span></div></a></div><div class="mh">2026年3月 <span class="ms">1開催</span></div><div class="grid"><a class="card" href="dashboard_20260301.html"><div class="cd">3/1<span class="cw">(日)</span></div>
+<div class="cv">中山 / 阪神 / 小倉</div><div class="cm">35R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎10/22的中</span></div></a></div><div class="mh">2026年4月 <span class="ms">1開催</span></div><div class="grid"><a class="card" href="dashboard_20260404.html"><div class="cd">4/4<span class="cw">(土)</span></div>
+<div class="cv">中山 / 阪神</div><div class="cm">23R  <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎3/12的中</span></div></a></div><div class="mh">2026年5月 <span class="ms">2開催</span></div><div class="grid"><a class="card" href="dashboard_20260502.html"><div class="cd">5/2<span class="cw">(土)</span></div>
+<div class="cv">新潟 / 東京 / 京都</div><div class="cm">34R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎10/19的中</span></div></a><a class="card" href="dashboard_20260531.html"><div class="cd">5/31<span class="cw">(日)</span></div>
+<div class="cv">東京 / 京都</div><div class="cm">23R <span class="w5b">WIN5</span> <span class="hit" title="本命が3着内に来たレース数/結果確定レース数">◎5/12的中</span></div></a></div><div class="mh">2026年6月 <span class="ms">1開催</span></div><div class="grid"><a class="card" href="dashboard_20260614.html"><div class="cd">6/14<span class="cw">(日)</span></div>
 <div class="cv">函館 / 東京 / 阪神</div><div class="cm">36R <span class="w5b">WIN5</span> <span class="nores">結果待</span></div></a></div>
 <div class="sub" style="margin-top:24px;font-size:11.5px">※予測はオッズ非使用(market-free)。推奨馬券の妙味はフェア価格超えだが控除率の壁で長期プラスは保証しない。各日ページはスマホ対応。</div>
 </div></body></html>
