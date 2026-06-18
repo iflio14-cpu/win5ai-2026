@@ -27,7 +27,7 @@
 .vraces .race:hover{background:rgba(91,141,239,.10)}
 .race{padding:10px 13px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .12s} .race:last-child{border-bottom:0} .race:hover{background:rgba(91,141,239,.10)}
 .w5row{background:linear-gradient(90deg,rgba(13,160,82,.10),transparent)}
-.rtop{display:flex;align-items:center;gap:7px;margin-bottom:3px} .rno{font-weight:800;font-size:15px;min-width:32px;color:#cdd6e6}
+.rtop{display:flex;align-items:center;gap:5px;margin-bottom:3px} .rno{font-weight:800;font-size:15px;min-width:30px;color:#cdd6e6;flex:0 0 auto}
 .w5{font-size:9px;font-weight:800;background:#0d9b4e;color:#fff;padding:2px 6px;border-radius:4px;letter-spacing:.4px}
 .rname{font-weight:700;font-size:12.5px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .grade{font-size:9px;font-weight:800;padding:2px 5px;border-radius:4px;background:#3a2d6e;color:#cdb8ff}
@@ -42,6 +42,7 @@
 .rgou{font-size:10.5px;color:#9fb4d8;margin-top:2px;line-height:1.55}
 .rdanger{font-size:10.5px;color:#ffb84d;margin-top:3px;font-weight:700;background:rgba(224,85,60,.13);border:1px solid rgba(224,120,60,.3);border-radius:6px;padding:2px 7px;line-height:1.5}
 .dgsub{color:#c98a5a;font-weight:400;font-size:9.5px}
+.ric{font-size:14px;line-height:1;cursor:help;vertical-align:middle;flex:0 0 auto}
 .gmk{font-weight:800;margin-right:1px}
 .rana{font-size:10.5px;color:#ec6b7f;margin-top:2px;line-height:1.55}
 .katasa{font-size:10px;font-weight:800;padding:2px 7px;border-radius:7px;color:#fff;min-width:22px;text-align:center;display:inline-block;box-shadow:0 1px 3px rgba(0,0,0,.3)}
@@ -122,76 +123,76 @@
 <div class="legend"><b style="color:var(--ink)">賭/見</b> <span class="mbi go">賭</span>=マシーンが買うレース(<span class="mbcore">利益コア</span>=長距離ステイヤー戦) <span class="mbi sk">見</span>=見送り(軸不在/自信低) <span class="mbi wt">待</span>=オッズ確定後に判定 ｜ <span style="color:#0d9b4e;font-weight:700">WIN5対象</span> ｜ 🎯=軸と紐が両方3着内(的中)。着順は予測でなく結果。</div>
 <div class="legend">確信GNN(オッズ帯の担当が自帯上位10%で自信あり):<span><i style="background:#3fb98f"></i>HON</span><span><i style="background:#e0a23c"></i>MID</span><span><i style="background:#e0556a"></i>ANA</span><span style="color:#5a6678;margin-left:4px">※BASE=全馬対象の土台モデル(◎本命の選定を担当・オッズ帯を持たないのでタグには出ません)</span></div>
 </div>
-<div class="vpick" id="vpick"><div class="vpicktitle">競馬場を選んでください</div><div class="vpickgrid"><button class="vbtn" onclick="showVenue(5)"><span class="vbn">東京</span><span class="vbm">12レース <span class="vpw5">WIN5</span></span><span class="vbt"><span class="vph">本命3着内 7/12</span></span></button><button class="vbtn" onclick="showVenue(8)"><span class="vbn">京都</span><span class="vbm">11レース <span class="vpw5">WIN5</span></span><span class="vbt"><span class="vph">本命3着内 5/11</span></span></button></div></div><div class="vsec" id="vsec_5"><div class="vsechd"><button class="vback" onclick="showPick()">← 競馬場選択にもどる</button><span class="vsectitle">東京 <span class="vn">12R</span></span></div><div class="vraces"><div class="race" onclick="showRace('5_12')">
-<div class="rtop"><span class="rno">12R</span><span class="rres rhit">🎯</span><span class="rname">目黒記念</span><span class="grade">GⅡ</span></div>
+<div class="vpick" id="vpick"><div class="vpicktitle">競馬場を選んでください</div><div class="vpickgrid"><button class="vbtn" onclick="showVenue(5)"><span class="vbn">東京</span><span class="vbm">12レース <span class="vpw5">WIN5</span></span><span class="vbt"><span class="vph">🎯的中 4/9</span></span></button><button class="vbtn" onclick="showVenue(8)"><span class="vbn">京都</span><span class="vbm">11レース <span class="vpw5">WIN5</span></span><span class="vbt"><span class="vph">🎯的中 3/9</span></span></button></div></div><div class="vsec" id="vsec_5"><div class="vsechd"><button class="vback" onclick="showPick()">← 競馬場選択にもどる</button><span class="vsectitle">東京 <span class="vn">12R</span></span></div><div class="vraces"><div class="race" onclick="showRace('5_12')">
+<div class="rtop"><span class="rno">12R</span><span class="grade">GⅡ</span><span class="rres rmiss">✖</span><span class="rname">目黒記念</span></div>
 <div class="rmid"><span class="cond">芝2500m 14頭 17:00</span></div>
-<div class="rhon">◎6 ウィクトルウェル <span class="hp">HON0.61</span> <b style="color:#0dd07a">2着</b></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">長距離</span><span class="mbcore">利益コア</span><span class="mbbet">ワイド 軸<b>8</b>→14・1・10 <span class="mbpt">3点</span></span> <span style="color:#c44">✗</span></div></div><div class="race w5row" onclick="showRace('5_11')">
-<div class="rtop"><span class="rno">11R</span><span class="rres rmiss">✖</span><span class="w5">WIN5</span><span class="rname">東京優駿</span><span class="grade">GⅠ</span></div>
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">長距離</span><span class="mbcore">利益コア</span><span class="mbbet">ワイド 軸<b>8</b>→14・1・10 <span class="mbpt">3点</span></span> <span style="color:#c44">✗</span></div></div><div class="race w5row" onclick="showRace('5_11')">
+<div class="rtop"><span class="rno">11R</span><span class="grade">GⅠ</span><span class="w5">WIN5</span><span class="rname">東京優駿</span></div>
 <div class="rmid"><span class="cond">芝2400m 18頭 15:40</span><span class="gnn" style="background:#e0a23c">MID</span><span class="gnn" style="background:#e0556a">ANA</span></div>
-<div class="rhon">◎2 マテンロウゲイル <span class="hp">HON0.53</span> <span style="color:#9aa3b2">5着</span></div><div class="mline"><span class="mbi sk">見</span><span class="mbrs">軸不在・信頼できる中人気の軸が立たない</span></div></div><div class="race w5row" onclick="showRace('5_10')">
-<div class="rtop"><span class="rno">10R</span><span class="rres rhit">🎯</span><span class="w5">WIN5</span><span class="rname">ＩＦＨＡ杯むらさき賞</span><span class="grade">OP</span></div>
+<div class="mline"><span class="mbi sk">見</span><span class="mbrs">軸不在・信頼できる中人気の軸が立たない</span></div></div><div class="race w5row" onclick="showRace('5_10')">
+<div class="rtop"><span class="rno">10R</span><span class="grade">OP</span><span class="w5">WIN5</span><span class="rres rhit">🎯</span><span class="rname">ＩＦＨＡ杯むらさき賞</span></div>
 <div class="rmid"><span class="cond">芝1800m 17頭 14:55</span></div>
-<div class="rhon">◎10 ジャサルディア <span class="hp">HON0.54</span> <b style="color:#0dd07a">2着</b></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">標準</span><span class="mbbet">ワイド 軸<b>10</b>→13・18・9 <span class="mbpt">3点</span></span> <b style="color:#0d9b4e">🎯550円</b></div></div><div class="race w5row" onclick="showRace('5_9')">
-<div class="rtop"><span class="rno">9R</span><span class="rres rhit">🎯</span><span class="w5">WIN5</span><span class="rname">ＡＲＦ杯薫風ステークス</span><span class="grade">OP</span></div>
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">標準</span><span class="mbbet">ワイド 軸<b>10</b>→13・18・9 <span class="mbpt">3点</span></span> <b style="color:#0d9b4e">🎯550円</b></div></div><div class="race w5row" onclick="showRace('5_9')">
+<div class="rtop"><span class="rno">9R</span><span class="grade">OP</span><span class="w5">WIN5</span><span class="rname">ＡＲＦ杯薫風ステークス</span></div>
 <div class="rmid"><span class="cond">ダ1600m 15頭 14:20</span></div>
-<div class="rhon">◎11 ヴァンドーム <span class="hp">HON0.54</span> <b style="color:#0dd07a">3着</b></div><div class="mline"><span class="mbi sk">見</span><span class="mbrs">自信低・軸の信頼度が低い(下位25%)=見送り</span></div></div><div class="race" onclick="showRace('5_8')">
-<div class="rtop"><span class="rno">8R</span><span class="rres rmiss">✖</span><span class="rname">青嵐賞</span><span class="grade">OP</span></div>
+<div class="mline"><span class="mbi sk">見</span><span class="mbrs">自信低・軸の信頼度が低い(下位25%)=見送り</span></div></div><div class="race" onclick="showRace('5_8')">
+<div class="rtop"><span class="rno">8R</span><span class="grade">OP</span><span class="rres rhit">🎯</span><span class="rname">青嵐賞</span></div>
 <div class="rmid"><span class="cond">芝2400m 14頭 13:45</span><span class="gnn" style="background:#e0a23c">MID</span></div>
-<div class="rhon">◎11 アロンズロッド <span class="hp">HON0.59</span> <span style="color:#9aa3b2">4着</span></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">長距離</span><span class="mbcore">利益コア</span><span class="mbbet">ワイド 軸<b>4</b>→7・5・1 <span class="mbpt">3点</span></span> <b style="color:#0d9b4e">🎯1420円</b></div></div><div class="race" onclick="showRace('5_7')">
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">長距離</span><span class="mbcore">利益コア</span><span class="mbbet">ワイド 軸<b>4</b>→7・5・1 <span class="mbpt">3点</span></span> <b style="color:#0d9b4e">🎯1420円</b></div></div><div class="race" onclick="showRace('5_7')">
 <div class="rtop"><span class="rno">7R</span><span class="rres rmiss">✖</span><span class="rname">1勝クラス</span></div>
 <div class="rmid"><span class="cond">ダ1400m 16頭 13:10</span><span class="gnn" style="background:#3fb98f">HON</span></div>
-<div class="rhon">◎11 ヘインズポイント <span class="hp">HON0.65</span> <span style="color:#9aa3b2">10着</span></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>11</b>→13・5 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('5_6')">
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>11</b>→13・5 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('5_6')">
 <div class="rtop"><span class="rno">6R</span><span class="rres rhit">🎯</span><span class="rname">1勝クラス</span></div>
 <div class="rmid"><span class="cond">芝1800m 11頭 12:40</span><span class="gnn" style="background:#3fb98f">HON</span><span class="gnn" style="background:#e0556a">ANA</span></div>
-<div class="rhon">◎10 シェーンシュティ <span class="hp">HON0.73</span> <b style="color:#0dd07a">3着</b></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">標準</span><span class="mbbet">ワイド 軸<b>10</b>→5・4・6 <span class="mbpt">3点</span></span> <b style="color:#0d9b4e">🎯550円</b></div></div><div class="race" onclick="showRace('5_5')">
-<div class="rtop"><span class="rno">5R</span><span class="rres rhit">🎯</span><span class="rname">一般</span></div>
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">標準</span><span class="mbbet">ワイド 軸<b>10</b>→5・4・6 <span class="mbpt">3点</span></span> <b style="color:#0d9b4e">🎯550円</b></div></div><div class="race" onclick="showRace('5_5')">
+<div class="rtop"><span class="rno">5R</span><span class="rres rmiss">✖</span><span class="rname">一般</span></div>
 <div class="rmid"><span class="cond">ダ1400m 13頭 12:10</span><span class="gnn" style="background:#3fb98f">HON</span></div>
-<div class="rhon">◎4 トヨサカエ <span class="hp">HON0.70</span> <b style="color:#0dd07a">1着</b></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>6</b>→4・1 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('5_4')">
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>6</b>→4・1 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('5_4')">
 <div class="rtop"><span class="rno">4R</span><span class="rres rhit">🎯</span><span class="rname">一般</span></div>
 <div class="rmid"><span class="cond">芝1600m 18頭 11:10</span><span class="gnn" style="background:#3fb98f">HON</span></div>
-<div class="rhon">◎5 ウインアプローチ <span class="hp">HON0.63</span> <b style="color:#0dd07a">3着</b></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">標準</span><span class="mbbet">ワイド 軸<b>5</b>→7・12・13 <span class="mbpt">3点</span></span> <b style="color:#0d9b4e">🎯210円</b></div></div><div class="race" onclick="showRace('5_3')">
-<div class="rtop"><span class="rno">3R</span><span class="rres rhit">🎯</span><span class="rname">一般</span></div>
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">標準</span><span class="mbbet">ワイド 軸<b>5</b>→7・12・13 <span class="mbpt">3点</span></span> <b style="color:#0d9b4e">🎯210円</b></div></div><div class="race" onclick="showRace('5_3')">
+<div class="rtop"><span class="rno">3R</span><span class="rres rmiss">✖</span><span class="rname">一般</span></div>
 <div class="rmid"><span class="cond">ダ1600m 16頭 10:40</span><span class="gnn" style="background:#3fb98f">HON</span></div>
-<div class="rhon">◎6 ヴァンデスペラン <span class="hp">HON0.65</span> <b style="color:#0dd07a">1着</b></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>6</b>→1・4 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('5_2')">
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>6</b>→1・4 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('5_2')">
 <div class="rtop"><span class="rno">2R</span><span class="rres rmiss">✖</span><span class="rname">一般</span></div>
 <div class="rmid"><span class="cond">ダ1400m 16頭 10:10</span></div>
-<div class="rhon">◎5 グランマエストロ <span class="hp">HON0.53</span> <span style="color:#9aa3b2">6着</span></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>5</b>→6・3 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('5_1')">
-<div class="rtop"><span class="rno">1R</span><span class="rres rmiss">✖</span><span class="rname">一般</span></div>
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>5</b>→6・3 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('5_1')">
+<div class="rtop"><span class="rno">1R</span><span class="rname">一般</span></div>
 <div class="rmid"><span class="cond">ダ1600m 16頭 09:40</span><span class="gnn" style="background:#e0a23c">MID</span><span class="gnn" style="background:#e0556a">ANA</span></div>
-<div class="rhon">◎14 バーヴァンシー <span class="hp">HON0.57</span> <span style="color:#9aa3b2">6着</span></div><div class="mline"><span class="mbi sk">見</span><span class="mbrs">自信低・軸の信頼度が低い(下位25%)=見送り</span></div></div></div></div><div class="vsec" id="vsec_8"><div class="vsechd"><button class="vback" onclick="showPick()">← 競馬場選択にもどる</button><span class="vsectitle">京都 <span class="vn">11R</span></span></div><div class="vraces"><div class="race" onclick="showRace('8_12')">
-<div class="rtop"><span class="rno">12R</span><span class="rres rmiss">✖</span><span class="rname">渡月橋ステークス</span><span class="grade">OP</span></div>
+<div class="mline"><span class="mbi sk">見</span><span class="mbrs">自信低・軸の信頼度が低い(下位25%)=見送り</span></div></div></div></div><div class="vsec" id="vsec_8"><div class="vsechd"><button class="vback" onclick="showPick()">← 競馬場選択にもどる</button><span class="vsectitle">京都 <span class="vn">11R</span></span></div><div class="vraces"><div class="race" onclick="showRace('8_12')">
+<div class="rtop"><span class="rno">12R</span><span class="grade">OP</span><span class="rname">渡月橋ステークス</span></div>
 <div class="rmid"><span class="cond">芝1400m 18頭 16:40</span></div>
-<div class="rhon">◎12 ノクナレア <span class="hp">HON0.52</span> <span style="color:#9aa3b2">6着</span></div><div class="mline"><span class="mbi sk">見</span><span class="mbrs">自信低・軸の信頼度が低い(下位25%)=見送り</span></div></div><div class="race" onclick="showRace('8_11')">
-<div class="rtop"><span class="rno">11R</span><span class="rres rmiss">✖</span><span class="rname">白百合ステークス</span><span class="grade">L</span></div>
+<div class="mline"><span class="mbi sk">見</span><span class="mbrs">自信低・軸の信頼度が低い(下位25%)=見送り</span></div></div><div class="race" onclick="showRace('8_11')">
+<div class="rtop"><span class="rno">11R</span><span class="grade">L</span><span class="rres rmiss">✖</span><span class="rname">白百合ステークス</span></div>
 <div class="rmid"><span class="cond">芝1800m 9頭 16:05</span><span class="gnn" style="background:#3fb98f">HON</span></div>
-<div class="rhon">◎8 オルフセン <span class="hp">HON0.62</span> <span style="color:#9aa3b2">7着</span></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>2</b>→8・4 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race w5row" onclick="showRace('8_10')">
-<div class="rtop"><span class="rno">10R</span><span class="rres rmiss">✖</span><span class="w5">WIN5</span><span class="rname">安土城ステークス</span><span class="grade">L</span></div>
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>2</b>→8・4 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race w5row" onclick="showRace('8_10')">
+<div class="rtop"><span class="rno">10R</span><span class="grade">L</span><span class="w5">WIN5</span><span class="rres rmiss">✖</span><span class="rname">安土城ステークス</span></div>
 <div class="rmid"><span class="cond">芝1400m 17頭 15:15</span></div>
-<div class="rhon">◎1 ヤブサメ <span class="hp">HON0.52</span> <span style="color:#9aa3b2">8着</span></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>1</b>→5・12 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race w5row" onclick="showRace('8_9')">
-<div class="rtop"><span class="rno">9R</span><span class="rres rhit">🎯</span><span class="w5">WIN5</span><span class="rname">與杼特別</span><span class="grade">OP</span></div>
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>1</b>→5・12 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race w5row" onclick="showRace('8_9')">
+<div class="rtop"><span class="rno">9R</span><span class="grade">OP</span><span class="w5">WIN5</span><span class="rres rhit">🎯</span><span class="rname">與杼特別</span></div>
 <div class="rmid"><span class="cond">ダ1800m 10頭 14:35</span><span class="gnn" style="background:#e0a23c">MID</span><span class="gnn" style="background:#e0556a">ANA</span></div>
-<div class="rhon">◎11 ニホンピロデヴィ <span class="hp">HON0.59</span> <b style="color:#0dd07a">2着</b></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">標準</span><span class="mbbet">ワイド 軸<b>11</b>→7・10・3 <span class="mbpt">3点</span></span> <b style="color:#0d9b4e">🎯190円</b></div></div><div class="race" onclick="showRace('8_8')">
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">標準</span><span class="mbbet">ワイド 軸<b>11</b>→7・10・3 <span class="mbpt">3点</span></span> <b style="color:#0d9b4e">🎯190円</b></div></div><div class="race" onclick="showRace('8_8')">
 <div class="rtop"><span class="rno">8R</span><span class="rres rmiss">✖</span><span class="rname">2勝クラス</span></div>
 <div class="rmid"><span class="cond">芝2000m 8頭 14:00</span></div>
-<div class="rhon">◎2 ステラクラウン <span class="hp">HON0.57</span> <span style="color:#9aa3b2">5着</span></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">標準</span><span class="mbbet">ワイド 軸<b>2</b>→4・8・3 <span class="mbpt">3点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('8_7')">
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">標準</span><span class="mbbet">ワイド 軸<b>2</b>→4・8・3 <span class="mbpt">3点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('8_7')">
 <div class="rtop"><span class="rno">7R</span><span class="rres rhit">🎯</span><span class="rname">1勝クラス</span></div>
 <div class="rmid"><span class="cond">芝2400m 10頭 13:25</span></div>
-<div class="rhon">◎1 ロードガレリア <span class="hp">HON0.57</span> <b style="color:#0dd07a">1着</b></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">長距離</span><span class="mbcore">利益コア</span><span class="mbbet">ワイド 軸<b>1</b>→6・3・2 <span class="mbpt">3点</span></span> <b style="color:#0d9b4e">🎯240円</b></div></div><div class="race" onclick="showRace('8_6')">
-<div class="rtop"><span class="rno">6R</span><span class="rres rhit">🎯</span><span class="rname">一般</span></div>
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">長距離</span><span class="mbcore">利益コア</span><span class="mbbet">ワイド 軸<b>1</b>→6・3・2 <span class="mbpt">3点</span></span> <b style="color:#0d9b4e">🎯240円</b></div></div><div class="race" onclick="showRace('8_6')">
+<div class="rtop"><span class="rno">6R</span><span class="rname">一般</span></div>
 <div class="rmid"><span class="cond">ダ1400m 14頭 12:55</span><span class="gnn" style="background:#e0556a">ANA</span></div>
-<div class="rhon">◎9 アパレイユ <span class="hp">HON0.49</span> <b style="color:#0dd07a">3着</b></div><div class="mline"><span class="mbi sk">見</span><span class="mbrs">自信低・軸の信頼度が低い(下位25%)=見送り</span></div></div><div class="race" onclick="showRace('8_5')">
-<div class="rtop"><span class="rno">5R</span><span class="rres rhit">🎯</span><span class="rname">一般</span></div>
+<div class="mline"><span class="mbi sk">見</span><span class="mbrs">自信低・軸の信頼度が低い(下位25%)=見送り</span></div></div><div class="race" onclick="showRace('8_5')">
+<div class="rtop"><span class="rno">5R</span><span class="rres rmiss">✖</span><span class="rname">一般</span></div>
 <div class="rmid"><span class="cond">芝1600m 18頭 12:25</span><span class="gnn" style="background:#e0556a">ANA</span></div>
-<div class="rhon">◎1 エイシンビーコン <span class="hp">HON0.56</span> <b style="color:#0dd07a">1着</b></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>1</b>→17・4 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('8_3')">
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>1</b>→17・4 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('8_3')">
 <div class="rtop"><span class="rno">3R</span><span class="rres rmiss">✖</span><span class="rname">一般</span></div>
 <div class="rmid"><span class="cond">ダ1900m 16頭 10:55</span><span class="gnn" style="background:#e0556a">ANA</span></div>
-<div class="rhon">◎10 クリノリキオー <span class="hp">HON0.53</span> <span style="color:#9aa3b2">5着</span></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>10</b>→8・6 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('8_2')">
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>10</b>→8・6 <span class="mbpt">2点</span></span> <span style="color:#c44">✗</span></div></div><div class="race" onclick="showRace('8_2')">
 <div class="rtop"><span class="rno">2R</span><span class="rres rhit">🎯</span><span class="rname">一般</span></div>
 <div class="rmid"><span class="cond">ダ1200m 16頭 10:25</span><span class="gnn" style="background:#3fb98f">HON</span></div>
-<div class="rhon">◎15 マリリンバローズ <span class="hp">HON0.72</span> <b style="color:#0dd07a">2着</b></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>15</b>→16・3 <span class="mbpt">2点</span></span> <b style="color:#0d9b4e">🎯150円</b></div></div><div class="race" onclick="showRace('8_1')">
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">圧倒的1頭</span><span class="mbbet">ワイド 軸<b>15</b>→16・3 <span class="mbpt">2点</span></span> <b style="color:#0d9b4e">🎯150円</b></div></div><div class="race" onclick="showRace('8_1')">
 <div class="rtop"><span class="rno">1R</span><span class="rres rmiss">✖</span><span class="rname">一般</span></div>
 <div class="rmid"><span class="cond">ダ1800m 16頭 09:55</span><span class="gnn" style="background:#3fb98f">HON</span><span class="gnn" style="background:#e0a23c">MID</span></div>
-<div class="rhon">◎7 ルージュエピック <span class="hp">HON0.63</span> <span style="color:#9aa3b2">7着</span></div><div class="mline"><span class="mbi go">賭</span><span class="mbchar">標準</span><span class="mbbet">ワイド 軸<b>7</b>→6・5・2 <span class="mbpt">3点</span></span> <span style="color:#c44">✗</span></div></div></div></div>
+<div class="mline"><span class="mbi go">賭</span><span class="mbchar">標準</span><span class="mbbet">ワイド 軸<b>7</b>→6・5・2 <span class="mbpt">3点</span></span> <span style="color:#c44">✗</span></div></div></div></div>
 <div class="modal" id="modal" onclick="if(event.target.id=='modal')closeM()"><div class="mbox">
 <div class="mhead"><span id="mtitle"></span><span class="mclose" onclick="closeM()">✕</span></div>
 <div class="mnote">左=全モデルのスコアを全頭表示(色=各列の順位 <b style="color:#ff5d6a">1位</b>/<b style="color:#ef8a93">2-3位</b>/<b style="color:#e0a23c">4-5位</b>)。馬キャラ=馬券マシーンの役割(<b style="color:#ffcf5a">軸</b>/<b style="color:#a9caff">紐</b>/<b style="color:#ec6b7f">穴</b>/<b style="color:#ffb84d">⚠危険</b>/🏆全モデル一致)。右=スコア分布グラフ。</div>
