@@ -1,0 +1,88 @@
+name: win5ai-heartbeat-watch
+# ★外部 dead man's switch★: GitHub のサーバ上(=userのPCから独立)で30分ごとに heartbeat.json の鮮度を検査。
+# PCが落ちる/自動処理が止まる/スクリプトが死ぬ = heartbeat.json が更新されなくなる → このジョブが失敗し
+# Issue を立てて owner に通知する = 「監査ソフトが無言でも、無言そのものを外部が検知して気づける」。
+# heartbeat.json は status_push(10分ごと)が health_watchdog 経由で更新・commit する。
+on:
+  schedule:
+    - cron: '*/30 * * * *'   # 30分ごと(GitHub scheduleは遅延あり=60分猶予で判定)
+  workflow_dispatch: {}
+permissions:
+  contents: read
+  issues: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Evaluate heartbeat freshness
+        id: hb
+        run: |
+          if [ ! -f heartbeat.json ]; then
+            echo "status=missing" >> "$GITHUB_OUTPUT"
+            echo "reason=heartbeat.json が存在しない(監視が一度も鼓動を書いていない)" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          NOW=$(date +%s)
+          EPOCH=$(python3 -c "import json;print(int(json.load(open('heartbeat.json'))['epoch']))")
+          OVERALL=$(python3 -c "import json;print(json.load(open('heartbeat.json')).get('overall','?'))")
+          AGE=$(( (NOW - EPOCH) / 60 ))
+          echo "age_min=$AGE" >> "$GITHUB_OUTPUT"
+          echo "overall=$OVERALL" >> "$GITHUB_OUTPUT"
+          if [ "$AGE" -gt 60 ]; then
+            echo "status=stale" >> "$GITHUB_OUTPUT"
+            echo "reason=心拍が ${AGE} 分前で停止(>60分)=端末が落ちている/自動処理が停止している疑い" >> "$GITHUB_OUTPUT"
+          elif [ "$OVERALL" = "err" ]; then
+            echo "status=err" >> "$GITHUB_OUTPUT"
+            echo "reason=監視が異常(overall=err)を報告(詳細は稼働ステータスページ/監視UIを確認)" >> "$GITHUB_OUTPUT"
+          else
+            echo "status=ok" >> "$GITHUB_OUTPUT"
+            echo "reason=正常(心拍 ${AGE} 分前 / overall=${OVERALL})" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Report OK
+        if: steps.hb.outputs.status == 'ok'
+        run: echo "OK ${{ steps.hb.outputs.reason }}"
+      - name: Alert on problem (open/update issue + fail the run)
+        if: steps.hb.outputs.status != 'ok'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const status = '${{ steps.hb.outputs.status }}';
+            const reason = `${{ steps.hb.outputs.reason }}`;
+            const title = `win5ai 稼働アラート [${status}]`;
+            const body = [
+              '監視ハートビートが異常を検知しました(このIssueは自動生成)。',
+              '',
+              `- 状態: **${status}**`,
+              `- 内容: ${reason}`,
+              `- 検知(UTC): ${new Date().toISOString()}`,
+              '',
+              'heartbeat.json が60分以上更新されない = 端末が落ちている / 自動処理(status_push・週次・当日取得)が停止している可能性があります。',
+              '復旧後、心拍が更新されればこのアラートは解消されます。'
+            ].join('\n');
+            const found = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: 'heartbeat' });
+            if (found.data.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: found.data[0].number, body });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title, body, labels: ['heartbeat'] });
+            }
+            core.setFailed(reason);
+      - name: Auto-close alert when healthy again
+        if: steps.hb.outputs.status == 'ok'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const found = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: 'heartbeat' });
+            for (const it of found.data) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo, issue_number: it.number,
+                body: '心拍が回復しました(overall=ok)。自動クローズします。' });
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo, issue_number: it.number, state: 'closed' });
+            }
